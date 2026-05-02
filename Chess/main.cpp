@@ -31,6 +31,8 @@ int main() {
 			{
 				cout << "Check!" << endl;
 				if (b.isCheckMate(false) == true) {
+					system("CLS");
+					b.print();
 					cout << " Check Mate! \n";
 					cout << " white Wins! \n";
 					system("pause");
@@ -71,8 +73,10 @@ int main() {
 			{
 				cout << "Check!" << endl;
 				if (b.isCheckMate(true) == true) {
+					system("CLS");
+					b.print();
 					cout << " Check Mate! \n";
-					cout << " White  Wins! \n";
+					cout << " Black  Wins! \n";
 					system("pause");
 					break;
 				}
