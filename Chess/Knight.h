@@ -2,7 +2,6 @@
 #include"Piece.h"
 class Knight:public Piece
 {
-	char name;
 public:
 	Knight(char name, bool isWhite, int row, int column) :Piece(isWhite, row, column,name) {}
 	bool isValidMove(int endRow, int endColumn) override{
@@ -12,4 +11,3 @@ public:
 		
 	}
 };
-
