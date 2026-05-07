@@ -1,4 +1,5 @@
 #pragma once
+#include<windows.h>
 #include<iostream>
 #include"Piece.h"
 #include"Rock.h"
@@ -56,7 +57,6 @@ public:
 			}
 		}
 		temp = nullptr;
-
 	}
 	bool movePiece(int startRow, int startColumn, int endRow, int endColumn) {
 		if (board[startRow][startColumn] == nullptr)
@@ -273,8 +273,11 @@ public:
 		return true;
 
 	}
+	// print
 	void print()const {
 		cout << endl;
+		HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, 12);
 		cout << "      ";
 		for (int k = 0; k < 8; k++) {
 			cout << k <<"    ";
@@ -282,18 +285,24 @@ public:
 		cout << "\n------------------------------------------";
 		cout << endl ;
 		for (int i = 0; i < 8; i++) {
+			SetConsoleTextAttribute(hConsole, 12);
 			cout <<" " << i << "    ";
 			for (int j = 0; j < 8; j++) {
-				
-					
-				
+
+
+
 				if (board[i][j] != nullptr) {
-					cout <<board[i][j]->getName() << "    ";
+					SetConsoleTextAttribute(hConsole, 7);
+					cout << board[i][j]->getName() << "    ";
 				}
 				else
-					cout << "*"<< "    ";
+				{
+					SetConsoleTextAttribute(hConsole, 11);
+					cout << "." << "    ";
+				}
 			}
 			cout << endl<<endl;
+			SetConsoleTextAttribute(hConsole, 12);
 		}
 		cout << "------------------------------------------\n";
 		cout << "      ";
@@ -301,7 +310,9 @@ public:
 			cout << k << "    ";
 		}
 		cout << endl;
+		SetConsoleTextAttribute(hConsole, 7);
 	}
+
 	bool check_isWhite(int startRow, int startColumn) {
 		if (board[startRow][startColumn] == nullptr)
 			return false;
